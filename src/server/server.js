@@ -106,15 +106,15 @@ app.post("/api/reserve", async (req, res) => {
 
 // ✅ Start server
 
-// app.listen(4000, "0.0.0.0", () => {
-//   console.log("🚀 Server running on http://localhost:4000");
-// });
+app.listen(4000, "0.0.0.0", () => {
+  console.log("🚀 Server running on http://localhost:4000");
+});
 
 // Vercel serverless export + local dev
-if (process.env.VERCEL || !module.parent) {
-  app.listen(4000, "0.0.0.0", () => {
-    console.log("🚀 Server running on http://localhost:4000");
-  });
-} else {
-  module.exports = app;
-}
+// if (process.env.VERCEL || !module.parent) {
+//   app.listen(4000, "0.0.0.0", () => {
+//     console.log("🚀 Server running on http://localhost:4000");
+//   });
+// } else {
+//   module.exports = app;
+// }
