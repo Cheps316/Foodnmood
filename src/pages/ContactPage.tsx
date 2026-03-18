@@ -46,11 +46,20 @@ const ContactPage = () => {
       setIsSubmitting(true);
       // const res = await fetch("http://localhost:4000/api/contact", {
       const apiUrl = import.meta.env.VITE_API_URL;
-      const res = await fetch(`${apiUrl}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      // const res = await fetch(`${apiUrl}/api/contact`, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(form),
+      // });
+      const res = await fetch(
+        "https://foodnmood-server.vercel.app/api/reserve",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        },
+      );
+
       const data = await res.json();
       if (data.success) {
         setSent(true);
