@@ -6,7 +6,22 @@ require("dotenv").config();
 const app = express();
 
 // ✅ Middleware
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:8080",
+      "http://localhost:5173",
+      "https://foodnmood-one.vercel.app",
+    ],
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  }),
+);
+
+// Explicit OPTIONS
+app.options("*", cors());
+
 app.use(express.json());
 
 // ✅ Test route (IMPORTANT)
