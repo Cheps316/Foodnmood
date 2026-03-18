@@ -23,6 +23,7 @@ const info = [
 const ContactPage = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // const handleSubmit = (e: React.FormEvent) => {
   //   e.preventDefault();
@@ -36,11 +37,13 @@ const ContactPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     if (!form.name || !form.email || !form.message) {
       toast.error("Please fill in all fields.");
       return;
     }
     try {
+      setIsSubmitting(true);
       // const res = await fetch("http://localhost:4000/api/contact", {
       const apiUrl = import.meta.env.VITE_API_URL;
       const res = await fetch(`${apiUrl}/api/contact`, {
@@ -57,6 +60,8 @@ const ContactPage = () => {
       }
     } catch (error) {
       toast.error("Network error.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -134,7 +139,11 @@ const ContactPage = () => {
                   </div>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-8">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-8"
+                  aria-busy={isSubmitting}
+                >
                   <div>
                     <label className="label-text block mb-3">Name</label>
                     <input
@@ -145,6 +154,7 @@ const ContactPage = () => {
                       }
                       placeholder="Your name"
                       required
+                      disabled={isSubmitting}
                       className="w-full bg-transparent border-b border-input py-3 text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none transition-colors"
                     />
                   </div>
@@ -158,6 +168,7 @@ const ContactPage = () => {
                       }
                       placeholder="your@email.com"
                       required
+                      disabled={isSubmitting}
                       className="w-full bg-transparent border-b border-input py-3 text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none transition-colors"
                     />
                   </div>
@@ -171,15 +182,25 @@ const ContactPage = () => {
                       placeholder="How can we help?"
                       required
                       rows={5}
+                      disabled={isSubmitting}
                       className="w-full bg-transparent border-b border-input py-3 text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none transition-colors resize-none"
                     />
                   </div>
                   <motion.button
                     type="submit"
                     whileTap={{ scale: 0.98 }}
-                    className="w-full bg-primary text-primary-foreground py-4 text-xs uppercase tracking-[0.15em] hover:bg-primary/90 transition-colors"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-primary-foreground py-4 text-xs uppercase tracking-[0.15em] hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                   >
-                    Send Message
+                    <span className="inline-flex items-center justify-center gap-2">
+                      {isSubmitting && (
+                        <span
+                          aria-hidden="true"
+                          className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground/40 border-t-primary-foreground"
+                        />
+                      )}
+                      {isSubmitting ? "Sending..." : "Send Message"}
+                    </span>
                   </motion.button>
                 </form>
               )}

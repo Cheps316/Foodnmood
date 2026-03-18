@@ -7,6 +7,7 @@ const transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const };
 
 const ReservePage = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -36,6 +37,7 @@ const ReservePage = () => {
   // };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
     if (
       !form.name ||
       !form.email ||
@@ -48,6 +50,7 @@ const ReservePage = () => {
       return;
     }
     try {
+      setIsSubmitting(true);
       const apiUrl = import.meta.env.VITE_API_URL;
       // const res = await fetch(
       //   "http://localhost:4000/api/reserve",
@@ -64,6 +67,8 @@ const ReservePage = () => {
       }
     } catch {
       toast.error("Network error.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -107,7 +112,11 @@ const ReservePage = () => {
               </h1>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-8"
+              aria-busy={isSubmitting}
+            >
               {[
                 {
                   name: "name",
@@ -140,6 +149,7 @@ const ReservePage = () => {
                     required={field.required}
                     value={form[field.name as keyof typeof form]}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className="w-full bg-transparent border-b border-input py-3 text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none transition-colors"
                   />
                 </div>
@@ -153,6 +163,7 @@ const ReservePage = () => {
                     value={form.guests}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                     className="w-full bg-transparent border-b border-input py-3 text-foreground focus:border-foreground focus:outline-none transition-colors"
                   >
                     <option value="">Select</option>
@@ -173,6 +184,7 @@ const ReservePage = () => {
                     required
                     value={form.date}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className="w-full bg-transparent border-b border-input py-3 text-foreground focus:border-foreground focus:outline-none transition-colors"
                   />
                 </div>
@@ -184,6 +196,7 @@ const ReservePage = () => {
                     required
                     value={form.time}
                     onChange={handleChange}
+                    disabled={isSubmitting}
                     className="w-full bg-transparent border-b border-input py-3 text-foreground focus:border-foreground focus:outline-none transition-colors"
                   />
                 </div>
@@ -199,6 +212,7 @@ const ReservePage = () => {
                   value={form.request}
                   onChange={handleChange}
                   rows={3}
+                  disabled={isSubmitting}
                   className="w-full bg-transparent border-b border-input py-3 text-foreground placeholder:text-muted-foreground focus:border-foreground focus:outline-none transition-colors resize-none"
                 />
               </div>
@@ -206,9 +220,18 @@ const ReservePage = () => {
               <motion.button
                 type="submit"
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-primary text-primary-foreground py-4 text-xs uppercase tracking-[0.15em] hover:bg-primary/90 transition-colors"
+                disabled={isSubmitting}
+                className="w-full bg-primary text-primary-foreground py-4 text-xs uppercase tracking-[0.15em] hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Confirm Reservation
+                <span className="inline-flex items-center justify-center gap-2">
+                  {isSubmitting && (
+                    <span
+                      aria-hidden="true"
+                      className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground/40 border-t-primary-foreground"
+                    />
+                  )}
+                  {isSubmitting ? "Submitting..." : "Confirm Reservation"}
+                </span>
               </motion.button>
             </form>
           </motion.div>
