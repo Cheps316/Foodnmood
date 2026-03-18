@@ -17,18 +17,51 @@ const ReservePage = () => {
     request: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!form.name || !form.email || !form.phone || !form.guests || !form.date || !form.time) {
+  //     toast.error("Please fill in all required fields.");
+  //     return;
+  //   }
+  //   setSubmitted(true);
+  //   toast.success("Reservation submitted successfully!");
+  // };
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.phone || !form.guests || !form.date || !form.time) {
+    if (
+      !form.name ||
+      !form.email ||
+      !form.phone ||
+      !form.guests ||
+      !form.date ||
+      !form.time
+    ) {
       toast.error("Please fill in all required fields.");
       return;
     }
-    setSubmitted(true);
-    toast.success("Reservation submitted successfully!");
+    try {
+      const res = await fetch("http://localhost:4000/api/reserve", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        toast.success("Reservation emailed!");
+      } else {
+        toast.error("Send failed.");
+      }
+    } catch {
+      toast.error("Network error.");
+    }
   };
 
   if (submitted) {
@@ -43,9 +76,12 @@ const ReservePage = () => {
           <div className="w-16 h-16 border-2 border-accent flex items-center justify-center mx-auto mb-8">
             <Check className="text-accent" size={32} />
           </div>
-          <h1 className="font-serif text-4xl font-bold mb-4">Reservation Confirmed</h1>
+          <h1 className="font-serif text-4xl font-bold mb-4">
+            Reservation Confirmed
+          </h1>
           <p className="text-muted-foreground leading-relaxed">
-            Thank you, {form.name}. We've received your reservation for {form.guests} guests on {form.date} at {form.time}. A confirmation has been sent to {form.email}.
+            Thank you, {form.name}. We've received your reservation for{" "}
+            {form.guests} guests on {form.date} at {form.time}.
           </p>
         </motion.div>
       </div>
@@ -63,14 +99,34 @@ const ReservePage = () => {
           >
             <div className="text-center mb-16">
               <p className="label-text mb-3">Join Us for Dinner</p>
-              <h1 className="font-serif text-5xl md:text-6xl font-bold">Reserve a Table</h1>
+              <h1 className="font-serif text-5xl md:text-6xl font-bold">
+                Reserve a Table
+              </h1>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-8">
               {[
-                { name: "name", label: "Full Name", type: "text", placeholder: "Your name", required: true },
-                { name: "email", label: "Email", type: "email", placeholder: "your@email.com", required: true },
-                { name: "phone", label: "Phone", type: "tel", placeholder: "+1 (555) 000-0000", required: true },
+                {
+                  name: "name",
+                  label: "Full Name",
+                  type: "text",
+                  placeholder: "Your name",
+                  required: true,
+                },
+                {
+                  name: "email",
+                  label: "Email",
+                  type: "email",
+                  placeholder: "your@email.com",
+                  required: true,
+                },
+                {
+                  name: "phone",
+                  label: "Phone",
+                  type: "tel",
+                  placeholder: "+1 (555) 000-0000",
+                  required: true,
+                },
               ].map((field) => (
                 <div key={field.name}>
                   <label className="label-text block mb-3">{field.label}</label>
@@ -97,9 +153,13 @@ const ReservePage = () => {
                     className="w-full bg-transparent border-b border-input py-3 text-foreground focus:border-foreground focus:outline-none transition-colors"
                   >
                     <option value="">Select</option>
-                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((n) => (
-                      <option key={n} value={n}>{n} {n === 1 ? "Guest" : "Guests"}</option>
-                    ))}
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(
+                      (n) => (
+                        <option key={n} value={n}>
+                          {n} {n === 1 ? "Guest" : "Guests"}
+                        </option>
+                      ),
+                    )}
                   </select>
                 </div>
                 <div>
@@ -127,7 +187,9 @@ const ReservePage = () => {
               </div>
 
               <div>
-                <label className="label-text block mb-3">Special Requests</label>
+                <label className="label-text block mb-3">
+                  Special Requests
+                </label>
                 <textarea
                   name="request"
                   placeholder="Allergies, celebrations, seating preferences..."

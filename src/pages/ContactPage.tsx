@@ -24,14 +24,38 @@ const ContactPage = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!form.name || !form.email || !form.message) {
+  //     toast.error("Please fill in all fields.");
+  //     return;
+  //   }
+  //   setSent(true);
+  //   toast.success("Message sent! We'll get back to you soon.");
+  // };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) {
       toast.error("Please fill in all fields.");
       return;
     }
-    setSent(true);
-    toast.success("Message sent! We'll get back to you soon.");
+    try {
+      const res = await fetch("http://localhost:4000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSent(true);
+        toast.success("Message sent!");
+      } else {
+        toast.error("Server error.");
+      }
+    } catch (error) {
+      toast.error("Network error.");
+    }
   };
 
   return (
