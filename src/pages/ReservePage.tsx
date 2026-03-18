@@ -54,11 +54,20 @@ const ReservePage = () => {
       const apiUrl = import.meta.env.VITE_API_URL;
       // const res = await fetch(
       //   "http://localhost:4000/api/reserve",
-      const res = await fetch(`${apiUrl}/api/reserve`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      // const res = await fetch(`${apiUrl}/api/reserve`, {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(form),
+      // });
+      const res = await fetch(
+        "https://foodnmood-server.vercel.app/api/reserve",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        },
+      );
+
       if (res.ok) {
         setSubmitted(true);
         toast.success("Reservation emailed!");

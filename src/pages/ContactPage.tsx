@@ -51,11 +51,14 @@ const ContactPage = () => {
       //   headers: { "Content-Type": "application/json" },
       //   body: JSON.stringify(form),
       // });
-      const res = await fetch(`${apiUrl}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      const res = await fetch(
+        "https://foodnmood-server.vercel.app/api/contact",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        },
+      );
 
       const data = await res.json();
       if (data.success) {
