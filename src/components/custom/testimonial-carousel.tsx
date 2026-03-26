@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
     company: "TechCorp",
     avatar: "https://i.pravatar.cc/150?img=1",
     content:
-      "This product has completely transformed how our team collaborates. The intuitive interface and powerful features have increased our productivity by 40%.",
+      "The menu has so many great options, and everything we tried was absolutely delicious.",
     rating: 5,
   },
   {
@@ -42,7 +42,7 @@ const testimonials: Testimonial[] = [
     company: "StartupXYZ",
     avatar: "https://i.pravatar.cc/150?img=3",
     content:
-      "I've tried many similar tools, but this one stands out for its simplicity and effectiveness. It's become an essential part of my daily workflow.",
+      "Every dish feels thoughtfully made. You can really taste the quality and care in every bite.",
     rating: 5,
   },
   {
@@ -52,7 +52,7 @@ const testimonials: Testimonial[] = [
     company: "BrandCo",
     avatar: "https://i.pravatar.cc/150?img=5",
     content:
-      "The customer support is exceptional, and the product keeps getting better with each update. Highly recommend for any growing business.",
+      "One of the best dining experiences I’ve had—simple, fresh, and full of flavor.",
     rating: 4,
   },
   {
@@ -62,7 +62,7 @@ const testimonials: Testimonial[] = [
     company: "InnovateTech",
     avatar: "https://i.pravatar.cc/150?img=8",
     content:
-      "We've seen a significant ROI since implementing this solution. It's helped us streamline operations and focus on what matters most.",
+      "Warm atmosphere, friendly service, and food that keeps me coming back again and again.",
     rating: 5,
   },
   {
@@ -72,7 +72,7 @@ const testimonials: Testimonial[] = [
     company: "DesignStudio",
     avatar: "https://i.pravatar.cc/150?img=9",
     content:
-      "As a designer, I appreciate the attention to detail in the UI. It's refreshing to use a product that's both beautiful and functional.",
+      "You don’t just eat here—you enjoy the whole experience. It’s simple, but done perfectly.",
     rating: 5,
   },
 ];

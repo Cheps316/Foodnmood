@@ -16,7 +16,9 @@ const info = [
   {
     icon: Clock,
     label: "Hours",
-    value: "Mon-Thurs 10am-3am · Fri-Sat 10am-4am · Sun Closed",
+    value: `Dine In: Mon - Sat: 5:30 pm - 9:30 pm
+    Pickup/Delivery: Mon - Sat: 10:30 am - 3:00 am
+     Sun: Closed`,
   },
 ];
 
@@ -101,14 +103,16 @@ const ContactPage = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={transition}
-                    className="flex gap-4"
+                    className="flex gap-4 items-center"
                   >
                     <div className="w-10 h-10 border border-border flex items-center justify-center shrink-0">
                       <item.icon size={16} />
                     </div>
                     <div>
                       <p className="label-text mb-1">{item.label}</p>
-                      <p className="text-sm">{item.value}</p>
+                      <p className="text-sm whitespace-pre-line">
+                        {item.value}
+                      </p>
                     </div>
                   </motion.div>
                 ))}

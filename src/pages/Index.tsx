@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ConciergeBell } from "lucide-react";
 import heroBurger from "@/assets/hero-burger.png";
 import restaurantInterior from "@/assets/hero.png";
 import MenuCard from "@/components/MenuCard";
 import { menuItems } from "@/data/menuData";
 import { FAQ } from "@/components/custom/faq";
 import { TestimonialCarousel } from "@/components/custom/testimonial-carousel";
+import { Utensils, Leaf, Wine, Award, Smile } from "lucide-react";
 
 const transition = { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const };
 const featured = menuItems.slice(0, 4);
@@ -25,6 +26,30 @@ const testimonials = [
     text: "Perfect for date night — stunning atmosphere and every dish is crafted with precision.",
   },
 ];
+const features = [
+  {
+    icon: Utensils,
+    title: "Culinary Excellence",
+    description:
+      "Our master chefs create extraordinary dishes using time-honored techniques and innovative approaches.",
+  },
+  {
+    icon: Leaf,
+    title: "Fresh Ingredients",
+    description:
+      "We source the finest local and seasonal ingredients to ensure every dish bursts with natural flavor.",
+  },
+  {
+    icon: Smile,
+    title: "Happy Customers",
+    description: "Loved by guests who keep coming back.",
+  },
+  {
+    icon: ConciergeBell,
+    title: "Top-Rated Experience",
+    description: "Quality, taste, and hospitality you can trust.",
+  },
+];
 
 const Index = () => (
   <div>
@@ -39,12 +64,13 @@ const Index = () => (
           >
             <p className="label-text mb-6">Premium Casual Dining</p>
             <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tight">
-              Fresh Burgers. <span className="italic">Authentic</span> Pasta &{" "}
-              <span className="italic">Handcrafted</span> Pizza.
+              Fresh Burgers. <span className="italic">Authentic</span> Pasta,
+              Perma & Pizza.
             </h1>
             <p className="text-muted-foreground mt-6 text-lg max-w-md leading-relaxed">
-              Elevated ingredients, 425°F ovens, and 24-hour dough — served in
-              an atmosphere that feels like home.
+              Whether you're looking for a light bite or the full foodie
+              experience, explore the dishes at Food N Mood and experience
+              authentic Australian Italian food in Prahran, Melbourne.
             </p>
             <div className="flex flex-wrap gap-4 mt-10">
               <Link
@@ -79,19 +105,23 @@ const Index = () => (
 
     {/* Stats */}
     <section className="border-y border-border">
-      <div className="container grid grid-cols-3 divide-x divide-border">
-        {[
-          { label: "Est.", value: "2024" },
-          { label: "Oven Temp", value: "425°F" },
-          { label: "Dough", value: "24hr" },
-        ].map((stat) => (
-          <div key={stat.label} className="py-8 text-center">
-            <p className="font-serif text-2xl md:text-3xl font-bold">
-              {stat.value}
-            </p>
-            <p className="label-text mt-1">{stat.label}</p>
-          </div>
-        ))}
+      <div className="container mx-auto px-4 py-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 divide-x divide-border">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="text-center transition-all duration-700"
+            >
+              <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4 transition-transform duration-300 hover:scale-110">
+                <feature.icon className="w-8 h-8" />
+              </div>
+              <h3 className=" text-xl font-semibold mb-2">{feature.title}</h3>
+              <p className="text-black leading-relaxed text-sm">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -141,13 +171,15 @@ const Index = () => (
               Where Craft Meets <span className="italic">Comfort</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Born from a belief that casual dining deserves the same precision
-              as fine dining. Every ingredient is sourced with intention, every
-              recipe refined over years of craft.
+              Born from a belief that casual dining deserves the same care as
+              fine dining, we focus on quality in every detail. From
+              thoughtfully sourced ingredients to recipes perfected over time,
+              everything we create reflects our passion for honest food.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Our 425°F stone ovens and 24-hour fermented dough produce flavors
-              that speak for themselves — no adjectives needed.
+              Our approach blends craftsmanship with comfort—bringing together
+              rich flavors, warm hospitality, and an experience that feels both
+              elevated and welcoming.
             </p>
             <Link
               to="/about"

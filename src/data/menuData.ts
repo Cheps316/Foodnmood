@@ -1,14 +1,18 @@
-import heroBurger from "@/assets/hero-burger.png";
-import pizza from "@/assets/pizza.jpg";
-import pasta from "@/assets/pasta.jpg";
-import bread from "@/assets/bread.jpg";
+import heroBurger from "@/assets/double-cheese-burger.jpeg";
+import prawnPizza from "@/assets/prawn-pizza.jpeg";
+import carbonara from "@/assets/carbonara.jpeg";
+import margherrita from "@/assets/margherita.jpeg";
+import dynamicBeefBurger from "@/assets/dynamic-beef-burger.jpeg";
+import eggBurger from "@/assets/egg-factor.jpeg";
+import schnitzelBurger from "@/assets/schnitzel-burger.jpeg";
+import bolognese from "@/assets/balognese.jpeg";
 
 export type MenuItem = {
   id: string;
   name: string;
   description: string;
   price: number;
-  category: "burgers" | "pizza" | "pasta" | "breads" | "other";
+  category: "burgers" | "pizza" | "pasta";
   image: string;
   orderLink: string;
 };
@@ -18,99 +22,85 @@ export const categories = [
   { id: "burgers", label: "Burgers" },
   { id: "pizza", label: "Pizza" },
   { id: "pasta", label: "Pasta" },
-  { id: "breads", label: "Breads" },
-  { id: "other", label: "Other" },
 ] as const;
 
 export const menuItems: MenuItem[] = [
   {
     id: "1",
-    name: "The Classic Smash",
-    description: "Double patty, aged cheddar, house pickles, brioche bun",
-    price: 16,
+    name: "Double Cheese Burger",
+    description:
+      "Double Beef pattie 200gm each, tomato sauce, aioli and cheese.",
+    price: 18,
     category: "burgers",
     image: heroBurger,
-    orderLink: "#",
+    orderLink: "https://foodnmoodonline.com.au/order-now",
   },
   {
     id: "2",
-    name: "Truffle Burger",
-    description: "Wagyu beef, truffle aioli, gruyère, caramelized onions",
-    price: 22,
-    category: "burgers",
-    image: heroBurger,
-    orderLink: "#",
+    name: "Carbonara",
+    description:
+      "Bacon, garlic, egg cooked in a cream sauce topped with parmesan cheese.",
+    price: 18,
+    category: "pasta",
+    image: carbonara,
+    orderLink: "https://foodnmoodonline.com.au/order-now",
   },
   {
     id: "3",
-    name: "Margherita DOP",
-    description: "San Marzano tomatoes, fior di latte, fresh basil, EVOO",
-    price: 18,
+    name: "Prawn Pizza",
+    description:
+      "Napoli, tiger prawn, red onion, basil, chilli, mozzarella topped W rocket & lemon",
+    price: 22,
     category: "pizza",
-    image: pizza,
-    orderLink: "#",
+    image: prawnPizza,
+    orderLink: "https://foodnmoodonline.com.au/order-now",
   },
   {
     id: "4",
-    name: "Quattro Formaggi",
-    description: "Mozzarella, gorgonzola, fontina, parmigiano-reggiano",
-    price: 20,
+    name: "Margherita",
+    description: "Napoli, basil, oregano, & mozzarella",
+    price: 16,
     category: "pizza",
-    image: pizza,
-    orderLink: "#",
+    image: margherrita,
+    orderLink: "https://foodnmoodonline.com.au/order-now",
   },
   {
     id: "5",
-    name: "Cacio e Pepe",
-    description: "Tonnarelli, pecorino romano, Tellicherry black pepper",
-    price: 19,
-    category: "pasta",
-    image: pasta,
-    orderLink: "#",
+    name: "Dynamic Beef Burger",
+    description:
+      "Beef pattie 200gm, lettuce, jalapenos, tomato, red onion, cheese and Hello burger sauce.",
+    price: 15,
+    category: "burgers",
+    image: dynamicBeefBurger,
+    orderLink: "https://foodnmoodonline.com.au/order-now",
   },
   {
     id: "6",
-    name: "Bolognese Ragu",
-    description: "Slow-cooked beef & pork ragu, pappardelle, 24-month parmigiano",
-    price: 21,
-    category: "pasta",
-    image: pasta,
-    orderLink: "#",
+    name: "Schnitzel Burger",
+    description: "Chicken schnitzel, lettuce, tomato, bacon, cheese and aioli",
+    price: 15,
+    category: "burgers",
+    image: schnitzelBurger,
+    orderLink: "https://foodnmoodonline.com.au/order-now",
   },
   {
     id: "7",
-    name: "Sourdough Loaf",
-    description: "72-hour ferment, stone-milled flour, sea salt crust",
-    price: 8,
-    category: "breads",
-    image: bread,
-    orderLink: "#",
+    name: "Egg Factor",
+    description:
+      "Beef pattie 200 gm, cheese, lettuce, tomato, bacon, Egg and aioli.",
+    price: 17,
+    category: "burgers",
+    image: eggBurger,
+    orderLink: "https://foodnmoodonline.com.au/order-now",
   },
   {
     id: "8",
-    name: "Focaccia Rosemary",
-    description: "Ligurian olive oil, flaked salt, fresh rosemary",
-    price: 10,
-    category: "breads",
-    image: bread,
-    orderLink: "#",
-  },
-  {
-    id: "9",
-    name: "Burrata Salad",
-    description: "Heirloom tomatoes, burrata, aged balsamic, micro basil",
-    price: 16,
-    category: "other",
-    image: pasta,
-    orderLink: "#",
-  },
-  {
-    id: "10",
-    name: "Tiramisu",
-    description: "Espresso-soaked savoiardi, mascarpone, Valrhona cocoa",
-    price: 12,
-    category: "other",
-    image: bread,
-    orderLink: "#",
+    name: "Bolognese",
+    description:
+      "Slow cooked beef cooked in red sauce topped with parmesan cheese.",
+    price: 18,
+    category: "pasta",
+    image: bolognese,
+    orderLink: "https://foodnmoodonline.com.au/order-now",
   },
 ];

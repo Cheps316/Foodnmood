@@ -16,7 +16,7 @@ const AboutPage = () => (
         >
           <p className="label-text mb-3">Our Story</p>
           <h1 className="font-serif text-5xl md:text-6xl font-bold">
-            About FoodnMood
+            About Food n Mood
           </h1>
         </motion.div>
 
@@ -88,20 +88,20 @@ const AboutPage = () => (
               Our <span className="italic">Mission</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Looking for the best takeaway in Prahran? At Food N Mood, we’re
-              here to serve you delicious food, whether you need a quick bite,
-              or a family meal with fresh ingredients and fast service, we never
-              turn down a hungry customer!
+              Our mission is to create food that brings people together—where
+              quality, care, and consistency are never compromised. Every
+              ingredient is chosen with intention, and every dish is crafted to
+              deliver both comfort and character.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              We're building a community around food that respects both the
-              ingredient and the person eating it. No shortcuts, no compromises,
-              no excuses.
+              We believe great food should feel honest, welcoming, and
+              memorable—served with the same attention to detail every single
+              time.
             </p>
             <div className="grid grid-cols-3 gap-6 mt-10 border-t border-border pt-10">
               {[
-                { value: "425°F", label: "Stone Ovens" },
-                { value: "24hr", label: "Dough Ferment" },
+                { value: "50+", label: "Menu Items" },
+                { value: "10K+", label: "Customers Served" },
                 { value: "100%", label: "Fresh Daily" },
               ].map((s) => (
                 <div key={s.label} className="text-center">

@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Link } from "react-router-dom";
 
 interface FAQItem {
   id: string;
@@ -16,45 +17,33 @@ interface FAQItem {
 const faqItems: FAQItem[] = [
   {
     id: "item-1",
-    question: "What is your return policy?",
+    question: "Do you offer dine-in, takeaway, or delivery?",
     answer:
-      "We offer a 30-day money-back guarantee on all our products. If you're not satisfied with your purchase, simply contact our support team within 30 days and we'll process a full refund, no questions asked.",
+      "We offer dine-in and takeaway options, with delivery available through selected platforms.",
   },
   {
     id: "item-2",
-    question: "How long does shipping take?",
+    question: "Do I need a reservation?",
     answer:
-      "Standard shipping typically takes 5-7 business days within the continental US. Express shipping is available for 2-3 day delivery. International shipping times vary by location, usually between 7-14 business days.",
+      "Reservations are recommended during busy hours, but we always welcome walk-ins whenever possible.",
   },
   {
     id: "item-3",
-    question: "Do you offer customer support?",
+    question: "What makes your food special?",
     answer:
-      "Absolutely! Our dedicated customer support team is available 24/7 via email, live chat, and phone. We pride ourselves on quick response times - most queries are resolved within 2 hours during business hours.",
+      "We focus on quality ingredients, refined recipes, and consistent craftsmanship to deliver a memorable dining experience.",
   },
   {
     id: "item-4",
-    question: "Can I change my subscription plan?",
+    question: "Is your menu suitable for groups or families?",
     answer:
-      "Yes, you can upgrade or downgrade your subscription at any time from your account settings. Changes take effect at the start of your next billing cycle. Pro-rated credits are applied when upgrading mid-cycle.",
+      "Absolutely. Our diverse menu offers something for everyone, making it perfect for both small gatherings and larger groups.",
   },
   {
     id: "item-5",
-    question: "Is my data secure?",
+    question: "Do you have vegetarian or dietary-friendly options?",
     answer:
-      "Security is our top priority. We use industry-standard AES-256 encryption for all data at rest and TLS 1.3 for data in transit. Our infrastructure is hosted on SOC 2 Type II certified data centers with 99.99% uptime.",
-  },
-  {
-    id: "item-6",
-    question: "Do you offer discounts for teams?",
-    answer:
-      "Yes! We offer tiered pricing for teams. Teams of 5-10 members get 15% off, teams of 11-25 get 25% off, and enterprise teams of 25+ can contact us for custom pricing that includes dedicated support and SLA guarantees.",
-  },
-  {
-    id: "item-7",
-    question: "How do I cancel my account?",
-    answer:
-      "You can cancel your account at any time from the billing section in your account settings. Your access will continue until the end of your current billing period. We also offer the option to pause your subscription if you need a temporary break.",
+      "Yes, our menu includes a variety of vegetarian and dietary-friendly dishes. Please let our staff know about any specific requirements.",
   },
 ];
 
@@ -67,7 +56,7 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <p className="mt-3 text-lg text-muted-foreground">
-            Find answers to common questions about our product and services
+            Find answers to common questions about our services
           </p>
         </div>
 
@@ -88,13 +77,17 @@ export function FAQ() {
           <h3 className="text-lg font-semibold text-foreground">
             Still have questions?
           </h3>
-          <p className="mt-2 text-muted-foreground">
+          <p className="my-2 text-muted-foreground">
             Can't find the answer you're looking for? Our friendly team is here
             to help.
           </p>
-          <button className="mt-4 inline-flex items-center justify-center rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+
+          <Link
+            to="/contact"
+            className=" bg-primary text-primary-foreground px-5 py-2.5 text-xs uppercase tracking-[0.15em] border border-primary hover:bg-primary/90 transition-colors"
+          >
             Contact Support
-          </button>
+          </Link>
         </div>
       </div>
     </section>

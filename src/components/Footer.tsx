@@ -14,12 +14,10 @@ const Footer = () => (
           />
 
           <p className="text-muted-foreground text-sm max-w-sm leading-relaxed">
-            Fresh burgers, authentic pasta & handcrafted pizza. Elevated casual
-            dining in the heart of the city.
+            Fresh burgers, authentic pasta, parma & handcrafted pizza. Elevated
+            casual dining in the heart of the city.
           </p>
-          <p className="label-text mt-6">
-            Est. 2024 · 425°F Ovens · 24hr Dough
-          </p>
+          <p className="label-text mt-6">50+ Menu Items . 100% Fresh Daily</p>
         </div>
         <div>
           <p className="label-text mb-4">Navigation</p>
@@ -43,7 +41,8 @@ const Footer = () => (
           </div>
         </div>
         <div>
-          <p className="label-text mb-4">Connect</p>
+          {/* Social Medias */}
+          {/* <p className="label-text mb-4">Connect</p>
           <div className="flex flex-col gap-3 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">
               Instagram
@@ -54,16 +53,23 @@ const Footer = () => (
             <a href="#" className="hover:text-foreground transition-colors">
               X (Twitter)
             </a>
-          </div>
-          <p className="label-text mt-8 mb-2">Hours</p>
-          <p className="text-sm text-muted-foreground">Mon-Thurs: 10am - 3am</p>
-          <p className="text-sm text-muted-foreground">Fri-Sat: 10am - 4am</p>
-          <p className="text-sm text-muted-foreground">Sun: Closed</p>
+          </div> */}
+          <p className="label-text mb-2">Hours</p>
+          <p className="text-sm text-bold">Dine In</p>
+          <p className="text-sm text-muted-foreground">
+            Mon - Sat: 5:30 Pm - 9:30 Pm
+          </p>
+          <p className="text-sm text-bold">Pickup/Delivery</p>
+          <p className="text-sm text-muted-foreground">
+            Mon - Sat: 10:30 Am-3:00 AM
+          </p>
+
+          <p className="text-sm text-bold mt-2">Sun: Closed</p>
         </div>
       </div>
       <div className="border-t border-border mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-xs text-muted-foreground">
-          © 2024. All rights reserved.
+          All rights reserved. Powered by Food n Mood
         </p>
 
         <img src="payments.svg" alt="payment" width={240} height={240} />
