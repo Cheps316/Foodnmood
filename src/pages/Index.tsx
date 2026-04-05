@@ -207,13 +207,13 @@ const Index = () => (
     </section>
 
     {/* Testimonials */}
-    <section className="section-padding">
+    {/* <section className="section-padding">
       <p className="label-text mb-3 text-center">What Our Guests Say</p>
       <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-16">
         Testimonials
       </h2>
       <TestimonialCarousel />
-    </section>
+    </section> */}
 
     {/* CTA */}
     <section className="section-padding-lg bg-primary text-primary-foreground">
