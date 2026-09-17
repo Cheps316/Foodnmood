@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ConciergeBell } from "lucide-react";
 import heroBurger from "@/assets/hero-burger.png";
-import restaurantInterior from "@/assets/hero.png";
+import restaurantInterior from "@/assets/6.jpg";
 import MenuCard from "@/components/MenuCard";
 import { menuItems } from "@/data/menuData";
 import { FAQ } from "@/components/custom/faq";

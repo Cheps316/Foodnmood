@@ -12,6 +12,7 @@ import ReservePage from "./pages/ReservePage";
 import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
+import GalleryPage from "./pages/GalleryPage";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/order" element={<OrderPage />} />
             <Route path="/reserve" element={<ReservePage />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
