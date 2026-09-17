@@ -8,47 +8,52 @@ import img7 from "@/assets/7.jpg";
 import img8 from "@/assets/8.jpg";
 import img9 from "@/assets/9.jpg";
 import img10 from "@/assets/10.jpg";
+import img11 from "@/assets/11.jpg";
 
 const galleryImages = [
   {
     src: img1,
-    alt: "Wedding reception tables with white and gold decorations",
+    alt: "restaurant image",
   },
   {
     src: img2,
-    alt: "Elegant banquet table with pink napkins and floral centerpieces",
+    alt: "",
   },
   {
     src: img3,
-    alt: "Decorated wedding stage and reception hall",
+    alt: "restaurant image",
   },
   {
     src: img4,
-    alt: "Wedding reception buffet area",
+    alt: "restaurant image",
   },
   {
     src: img5,
-    alt: "Reception room with decorated dining tables",
+    alt: "restaurant image",
   },
   {
     src: img6,
-    alt: "Wedding stage with purple lighting",
+    alt: "restaurant image",
   },
   {
     src: img7,
-    alt: "Decorated reception room with white chairs",
+    alt: "restaurant image",
   },
   {
     src: img8,
-    alt: "Close-up of a decorated reception table",
+    alt: "restaurant image",
   },
   {
     src: img9,
-    alt: "Banquet room prepared for a celebration",
+    alt: "restaurant image",
   },
   {
     src: img10,
-    alt: "Large wedding reception room",
+    alt: "restaurant image",
+  },
+  {
+    src: img11,
+    alt: "restaurant image",
   },
 ];
 
